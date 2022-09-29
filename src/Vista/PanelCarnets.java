@@ -49,10 +49,10 @@ import net.sourceforge.barbecue.output.OutputException;
  */
 public class PanelCarnets extends javax.swing.JPanel {
 
-    private DefaultTableModel model;
-    private ControllerCarnets ObjController = new ControllerCarnets();
-    private final UWPButton btnGenerar = new UWPButton();
-    private final UWPButton btnReporte = new UWPButton();
+    public DefaultTableModel model;
+    public ControllerCarnets ObjController = new ControllerCarnets();
+    public final UWPButton btnGenerar = new UWPButton();
+    public final UWPButton btnReporte = new UWPButton();
     private int ID;
     private byte[] imagen;
     private File file;

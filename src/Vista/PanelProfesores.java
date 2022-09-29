@@ -39,17 +39,17 @@ import net.sf.jasperreports.view.JasperViewer;
 public class PanelProfesores extends javax.swing.JPanel {
 
     DefaultTableModel ModelProf;
-    private final UWPButton btnActualizar = new UWPButton();
-    private final UWPButton btnEliminar = new UWPButton();
-    private final UWPButton btnReporteP = new UWPButton();
+    public final UWPButton btnActualizar = new UWPButton();
+    public final UWPButton btnEliminar = new UWPButton();
+    public final UWPButton btnReporteP = new UWPButton();
     private ControllerPersonal objControllerP = new ControllerPersonal();
-    private Font font = new Font("Roboto Black", Font.PLAIN, 18);
+    public Font font = new Font("Roboto Black", Font.PLAIN, 18);
     private ImageIcon modificar = new ImageIcon(getClass().getResource("/Recursos_Proyecto/editar.png"));
     private ImageIcon eliminar = new ImageIcon(getClass().getResource("/Recursos_Proyecto/eliminar.png"));
     private ImageIcon reporteimg = new ImageIcon(getClass().getResource("/Recursos_Proyecto/bxs-report 1.png"));
     private int ID;
     private int panelperoes = PanelOpcionesPersonal.showinter;
-    private DefaultTableModel modelo = new DefaultTableModel();
+    public DefaultTableModel modelo = new DefaultTableModel();
     String respuesta;
     String carnet;
     ControllerBuscador objC = new ControllerBuscador();
@@ -89,7 +89,7 @@ public class PanelProfesores extends javax.swing.JPanel {
         }
     }
 
-    private void cargarTablaProf() {
+    public void cargarTablaProf() {
         while (ModelProf.getRowCount() > 0) {
             ModelProf.removeRow(0);
         }

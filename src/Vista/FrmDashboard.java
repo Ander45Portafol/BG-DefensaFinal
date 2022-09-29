@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Controlador.ControllerBuscador;
 import Controlador.ControllerLogin;
 import Controles_Personalizados.Paneles.PanelRound;
 
@@ -42,11 +43,19 @@ import javax.swing.JFrame;
 public class FrmDashboard extends javax.swing.JFrame implements Runnable {
 
     private String tipousuario;
+    String val = "0";
     PanelDashboard pld = new PanelDashboard();
     ControllerLogin clog = new ControllerLogin();
-    PanelUsuarios_dashbord pu = new PanelUsuarios_dashbord();
     private int ev;
     private int iduser;
+    PanelUsuarios_dashbord plU = new PanelUsuarios_dashbord();
+    PanelEstudiantes plE = new PanelEstudiantes();
+    PanelProfesores plP = new PanelProfesores();
+    PanelCarnets plC = new PanelCarnets();
+    PanelVehiculos plV = new PanelVehiculos();
+    PanelParqueo plpk = new PanelParqueo();
+    PanelContactos plCon = new PanelContactos();
+    ControllerBuscador obj = new ControllerBuscador();
 
     /**
      * Creates new form Dashboard
@@ -64,6 +73,7 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
         //jpanelfondo
         Niveles(tipo);
         Evaluador1();
+        lblVal.setVisible(false);
         lblNombre.setText(nombre);
         lblTipo.setText(tipo);
 
@@ -129,7 +139,7 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
 
         if (ampm.equals("pm")) {
             int h = cal.get(Calendar.HOUR_OF_DAY);
-            if(h != 12){
+            if (h != 12) {
                 h = cal.get(Calendar.HOUR_OF_DAY) - 12;
             }
             hora = h > 9 ? "" + h : "0" + h;
@@ -211,6 +221,7 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
         lblSun = new javax.swing.JLabel();
         lblNight = new javax.swing.JLabel();
         lblSunset = new javax.swing.JLabel();
+        lblVal = new javax.swing.JLabel();
         PanelContenedorForms = new Controles_Personalizados.Paneles.PanelRound();
         pnlWest = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -297,6 +308,9 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtBuscadorKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscadorKeyReleased(evt);
+            }
         });
 
         jPanel9.setBackground(new java.awt.Color(231, 234, 239));
@@ -335,7 +349,7 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
                 .addGroup(PanelMOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNormal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMO, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         PanelMOLayout.setVerticalGroup(
             PanelMOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -448,13 +462,17 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
                 .addGap(1, 1, 1))
         );
 
+        lblVal.setText("jLabel1");
+
         javax.swing.GroupLayout pnlNorthFormLayout = new javax.swing.GroupLayout(pnlNorthForm);
         pnlNorthForm.setLayout(pnlNorthFormLayout);
         pnlNorthFormLayout.setHorizontalGroup(
             pnlNorthFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlNorthFormLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(txtBuscador, javax.swing.GroupLayout.DEFAULT_SIZE, 795, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(lblVal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtBuscador, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12))
@@ -463,7 +481,9 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
             pnlNorthFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlNorthFormLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(txtBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlNorthFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblVal))
                 .addGap(8, 8, 8))
             .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
@@ -700,7 +720,7 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
 
         btnMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos_Proyecto/Maximizar.png"))); // NOI18N
-        btnMinimizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMinimizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnMinimizarMousePressed(evt);
@@ -709,7 +729,7 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
         jPanel1.add(btnMinimizar);
 
         btnMaximizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos_Proyecto/MinimizarLogin.png"))); // NOI18N
-        btnMaximizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMaximizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMaximizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnMaximizarMousePressed(evt);
@@ -718,7 +738,7 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
         jPanel1.add(btnMaximizar);
 
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos_Proyecto/CerrarLogin.png"))); // NOI18N
-        btnCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnMinimizarMousePressed(evt);
@@ -812,10 +832,10 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
 
     void capturariduser() {
         clog.setUsuario(lblNombre.getText());
-        ResultSet rs=clog.validaruseractive();
+        ResultSet rs = clog.validaruseractive();
         try {
             if (rs.next()) {
-                iduser=rs.getInt("idUsuario");
+                iduser = rs.getInt("idUsuario");
             }
         } catch (SQLException ex) {
             Logger.getLogger(FrmDashboard.class.getName()).log(Level.SEVERE, null, ex);
@@ -902,6 +922,9 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
 
         pld.setSize(1270, 620);
         pld.setLocation(0, 0);
+        
+        val = "1";
+        lblVal.setText(val);
 
         PanelContenedorForms.removeAll();
         PanelContenedorForms.add(pld);
@@ -921,13 +944,16 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
         panelSeleccionContactos.setVisible(false);
         panelSeleccionAjustes.setVisible(false);
 
-        pu.setSize(1270, 620);
-        pu.setLocation(0, 0);
+        plU.setSize(1270, 620);
+        plU.setLocation(0, 0);
 
         PanelContenedorForms.removeAll();
-        PanelContenedorForms.add(pu);
+        PanelContenedorForms.add(plU);
         PanelContenedorForms.revalidate();
         PanelContenedorForms.repaint();
+        
+        val = "2";
+        lblVal.setText(val);
     }
 
     public void showPanelStudents() {
@@ -942,12 +968,14 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
         panelSeleccionContactos.setVisible(false);
         panelSeleccionAjustes.setVisible(false);
 
-        PanelEstudiantes pl = new PanelEstudiantes();
-        pl.setSize(1270, 620);
-        pl.setLocation(0, 0);
+        plE.setSize(1270, 620);
+        plE.setLocation(0, 0);
 
+        val = "3";
+        lblVal.setText(val);
+        
         PanelContenedorForms.removeAll();
-        PanelContenedorForms.add(pl);
+        PanelContenedorForms.add(plE);
         PanelContenedorForms.revalidate();
         PanelContenedorForms.repaint();
     }
@@ -964,12 +992,15 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
         panelSeleccionContactos.setVisible(false);
         panelSeleccionAjustes.setVisible(false);
 
-        PanelProfesores pl = new PanelProfesores();
-        pl.setSize(1270, 620);
-        pl.setLocation(0, 0);
+      
+        plP.setSize(1270, 620);
+        plP.setLocation(0, 0);
+        
+         val = "4";
+        lblVal.setText(val);
 
         PanelContenedorForms.removeAll();
-        PanelContenedorForms.add(pl);
+        PanelContenedorForms.add(plP);
         PanelContenedorForms.revalidate();
         PanelContenedorForms.repaint();
     }
@@ -985,14 +1016,17 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
         panelSeleccionAjustes.setVisible(false);
         panelSeleccionLogout.setVisible(false);
 
-        PanelCarnets pl = new PanelCarnets();
-        pl.setSize(1270, 620);
-        pl.setLocation(0, 0);
-
+        
+        plC.setSize(1270, 620);
+        plC.setLocation(0, 0);
+        
         PanelContenedorForms.removeAll();
-        PanelContenedorForms.add(pl);
+        PanelContenedorForms.add(plC);
         PanelContenedorForms.revalidate();
         PanelContenedorForms.repaint();
+        
+         val = "5";
+        lblVal.setText(val);
     }
 
     public void showPanelCars() {
@@ -1007,14 +1041,17 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
         panelSeleccionAjustes.setVisible(false);
         panelSeleccionLogout.setVisible(false);
 
-        PanelVehiculos pl = new PanelVehiculos();
-        pl.setSize(1270, 620);
-        pl.setLocation(0, 0);
+        
+        plV.setSize(1270, 620);
+        plV.setLocation(0, 0);
 
         PanelContenedorForms.removeAll();
-        PanelContenedorForms.add(pl);
+        PanelContenedorForms.add(plV);
         PanelContenedorForms.revalidate();
         PanelContenedorForms.repaint();
+        
+         val = "6";
+        lblVal.setText(val);
     }
 
     public void showPanelPark() {
@@ -1028,15 +1065,15 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
         panelSeleccionContactos.setVisible(false);
         panelSeleccionAjustes.setVisible(false);
         panelSeleccionLogout.setVisible(false);
-
-        PanelParqueo pl = new PanelParqueo();
-        pl.setSize(1270, 620);
-        pl.setLocation(0, 0);
+        plpk.setSize(1270, 620);
+        plpk.setLocation(0, 0);
 
         PanelContenedorForms.removeAll();
-        PanelContenedorForms.add(pl);
+        PanelContenedorForms.add(plpk);
         PanelContenedorForms.revalidate();
         PanelContenedorForms.repaint();
+         val = "7";
+        lblVal.setText(val);
     }
 
     public void showPanelConts() {
@@ -1051,12 +1088,15 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
         panelSeleccionAjustes.setVisible(false);
         panelSeleccionLogout.setVisible(false);
 
-        PanelContactos pl = new PanelContactos();
-        pl.setSize(1270, 620);
-        pl.setLocation(0, 0);
+        
+        plCon.setSize(1270, 620);
+        plCon.setLocation(0, 0);
+        
+         val = "8";
+        lblVal.setText(val);
 
         PanelContenedorForms.removeAll();
-        PanelContenedorForms.add(pl);
+        PanelContenedorForms.add(plCon);
         PanelContenedorForms.revalidate();
         PanelContenedorForms.repaint();
     }
@@ -1098,6 +1138,9 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
         PanelAccesos pl = new PanelAccesos(tipousuario);
         pl.setSize(1270, 620);
         pl.setLocation(0, 0);
+        
+         val = "9";
+        lblVal.setText(val);
 
         PanelContenedorForms.removeAll();
         PanelContenedorForms.add(pl);
@@ -1144,7 +1187,7 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
         capturariduser();
         clog.setIdestado(2);
         clog.setIdusuario(iduser);
-        if (clog.ActualizarEstado()==true) {
+        if (clog.ActualizarEstado() == true) {
             System.out.println("Si se pudo y ahora esta inactivo");
         }
         FrmLogin login = new FrmLogin();
@@ -1160,7 +1203,7 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
         ValidacionesSistema.ValidacionesBeep_Go.Modo = 2;
         NormalMode();
         pld.mode();
-        pu.darkmod();
+        plU.darkmod();
         if (_pnldash.isShowing()) {
 
             _pnldash.hide();
@@ -1173,7 +1216,7 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
         ValidacionesSistema.ValidacionesBeep_Go.Modo = 1;
         DarkMode();
         pld.mode();
-        pu.darkmod();
+        plU.darkmod();
         _pnldash.hide();
         if (_pnldash.isVisible()) {
 
@@ -1354,6 +1397,124 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
         //}
     }//GEN-LAST:event_txtBuscadorKeyPressed
 
+    private void txtBuscadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscadorKeyReleased
+        String rec = lblVal.getText();
+        if (rec.equals("2")) {
+            if (txtBuscador.getText().trim().isEmpty()) {
+                plU.CargarTabla();
+            } else {
+                while (plU.modelo.getRowCount() > 0) {
+                    plU.modelo.removeRow(0);
+                }
+                try {
+                    ResultSet rs = obj.CargarUsuariosController(txtBuscador.getText());
+                    while (rs.next()) {
+                        Object[] oValores = {rs.getInt("idUsuario"), rs.getInt("idPersonal"), rs.getString("nombre_p"), rs.getString("apellido_p"), rs.getString("nombre_usuario"), rs.getInt("idTipoUsuario"), rs.getString("tipo_usuario"), rs.getInt("idEstadoUsuario"), rs.getString("estado_usuario"), rs.getBytes("imagen"), plU.btnActualizar, plU.btnEliminar, plU.btnReporte};
+
+                        plU.modelo.addRow(oValores);
+                    }
+                } catch (Exception e) {
+                }
+            }
+        } else if (rec.equals("3")) {
+            if (txtBuscador.getText().trim().isEmpty()) {
+                plE.cargarTabla();
+            } else {
+                while (plE.ModelAlumnos.getRowCount() > 0) {
+                    plE.ModelAlumnos.removeRow(0);
+                }
+                try {
+                    ResultSet rs = obj.CargarEstudiantesController(txtBuscador.getText());
+                    while (rs.next()) {
+                        Object[] Campos = {rs.getInt("idPersonal"), rs.getString("nombre_p"), rs.getString("apellido_p"), rs.getString("fecha_nacimiento"), rs.getString("documento"), rs.getString("Carnet"), rs.getString("tipo_personal"), rs.getString("direccion"), rs.getString("correo"), rs.getInt("idTipoDocumento"), rs.getInt("idTipoPersonal"), rs.getInt("idGenero"), rs.getString("genero"), rs.getString("documento"), plE.btnActualizar, plE.btnEliminar, plE.btnReporteP};
+                        plE.ModelAlumnos.addRow(Campos);
+                    }
+                } catch (Exception e) {
+                }
+            }
+        } else if (rec.equals("4")) {
+            if (txtBuscador.getText().trim().isEmpty()) {
+                plP.cargarTablaProf();
+            } else {
+                while (plP.ModelProf.getRowCount() > 0) {
+                    plP.ModelProf.removeRow(0);
+                }
+                try {
+                    ResultSet rs = obj.CargarVehiculosCarnetController(txtBuscador.getText());
+                    while (rs.next()) {
+                        Object[] objS = {rs.getInt("idPersonal"), rs.getString("nombre_p"), rs.getString("apellido_p"), rs.getString("fecha_nacimiento"), rs.getString("documento"), rs.getString("Carnet"), rs.getString("tipo_personal"), rs.getInt("idTipoDocumento"), rs.getInt("idGenero"), rs.getString("genero"), rs.getInt("idTipoPersonal"), rs.getString("tipo_documento"), rs.getString("direccion"), rs.getString("correo"), plP.btnActualizar, plP.btnEliminar, plP.btnReporteP};
+                        plP.ModelProf.addRow(objS);
+                    }
+                } catch (Exception e) {
+                }
+            }
+        } else if (rec.equals("5")) {
+            if (txtBuscador.getText().trim().isEmpty()) {
+                plC.cargarTabla();
+            } else {
+                while (plC.model.getRowCount() > 0) {
+                    plC.model.removeRow(0);
+                }
+                try {
+                    ResultSet rs = obj.CargarCarnetsController(txtBuscador.getText());
+                    while (rs.next()) {
+                        Object[] Valores = {rs.getString("nombre_p"), rs.getString("apellido_p"), rs.getString("Carnet"), rs.getString("tipo_personal"), rs.getInt("idPersonal"), plC.btnGenerar};
+                        plC.model.addRow(Valores);
+                    }
+                } catch (Exception e) {
+                }
+            }
+        } else if (rec.equals("6")) {
+            if (txtBuscador.getText().trim().isEmpty()) {
+                plV.CargarTablaVehiculos();
+            } else {
+                while (plV.model.getRowCount() > 0) {
+                    plV.model.removeRow(0);
+                }
+                try {
+                    ResultSet rs = obj.CargarVehiculosPlacaController(txtBuscador.getText());
+                    while (rs.next()) {
+                        Object[] oValues = {rs.getInt("idVehiculo"), rs.getString("Personal"), rs.getString("Carnet"), rs.getString("placa"), rs.getString("color"), rs.getInt("idPersonal"), plV.btnModificar, plV.btnEliminar, plV.btnReporte};
+                        plV.model.addRow(oValues);
+                    }
+                } catch (Exception e) {
+                }
+            }
+        } else if (rec.equals("7")) {
+            if (txtBuscador.getText().trim().isEmpty()) {
+                plpk.getdataPark();
+            } else {
+                while (plpk.tbpark.getRowCount() > 0) {
+                    plpk.tbpark.removeRow(0);
+                }
+                try {
+                    ResultSet rs = obj.cargarParqueosController(txtBuscador.getText());
+                    while (rs.next()) {
+                        Object[] data = {rs.getInt("IDDetalle"), rs.getInt("idPersonal"), rs.getString("carnet"), rs.getInt("idAcceso"), rs.getDate("fecha"), rs.getTime("hora"), rs.getInt("idVehiculo"), rs.getString("placa"), rs.getInt("idEstacionamiento"), rs.getInt("numero_estacionamiento"), rs.getInt("idParqueo"), rs.getInt("numero_parqueo"), rs.getString("Ubicacion"), plpk.btnupdate, plpk.btndelete};
+                        plpk.tbpark.addRow(data);
+                    }
+                } catch (Exception e) {
+                }
+            }
+        } else if (rec.equals("8")) {
+            if (txtBuscador.getText().trim().isEmpty()) {
+                plCon.CargarTabla();
+            } else {
+                while (plCon.model.getRowCount() > 0) {
+                    plCon.model.removeRow(0);
+                }
+                try {
+                    ResultSet rs = obj.cargarContactos(txtBuscador.getText());
+                    while (rs.next()) {
+                        Object[] oValues = {rs.getInt("idContacto"), rs.getString("contacto"), rs.getString("Personal"), rs.getString("tipo_contacto"), rs.getInt("idPersonal"), rs.getInt("idTipoContacto"), plCon.btnModificar, plCon.btnEliminar, plCon.btnReporte};
+                        plCon.model.addRow(oValues);
+                    }
+                } catch (Exception e) {
+                }
+            }
+        }
+    }//GEN-LAST:event_txtBuscadorKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -1431,6 +1592,7 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel lblTipo;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JLabel lblUsuarioDark;
+    private javax.swing.JLabel lblVal;
     private Controles_Personalizados.Paneles.PanelRound panelFondo;
     private Controles_Personalizados.Paneles.PanelRound panelSeleccionAccesos;
     private Controles_Personalizados.Paneles.PanelRound panelSeleccionAjustes;

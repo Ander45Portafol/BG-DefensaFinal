@@ -25,8 +25,8 @@ import javax.swing.JOptionPane;
  */
 public class PanelParqueo extends javax.swing.JPanel {
 
-    private final UWPButton btnupdate = new UWPButton();
-    private final UWPButton btndelete = new UWPButton();
+    public final UWPButton btnupdate = new UWPButton();
+    public final UWPButton btndelete = new UWPButton();
     private final ImageIcon modifIcon = new ImageIcon(getClass().getResource("/Recursos_Proyecto/editar.png"));
     private final ImageIcon deleteIcon = new ImageIcon(getClass().getResource("/Recursos_Proyecto/eliminar.png"));
     private int frmstate = 1;

@@ -38,13 +38,13 @@ public class PanelUsuarios_dashbord extends javax.swing.JPanel {
 
     DefaultTableModel modelo;
     DefaultTableModel modelodark;
-    private final UWPButton btnActualizar = new UWPButton();
-    private final UWPButton btnEliminar = new UWPButton();
-    private final UWPButton btnReporte = new UWPButton();
-    private final UWPButton btnActualizardark = new UWPButton();
-    private final UWPButton btnEliminardark = new UWPButton();
-    private final UWPButton btnReportedark = new UWPButton();
-    private Font font = new Font("Roboto Black", Font.PLAIN, 18);
+    public final UWPButton btnActualizar = new UWPButton();
+    public final UWPButton btnEliminar = new UWPButton();
+    public final UWPButton btnReporte = new UWPButton();
+    public final UWPButton btnActualizardark = new UWPButton();
+    public final UWPButton btnEliminardark = new UWPButton();
+    public final UWPButton btnReportedark = new UWPButton();
+    public Font font = new Font("Roboto Black", Font.PLAIN, 18);
     ImageIcon Modificar = new ImageIcon(getClass().getResource("/Recursos_Proyecto/editar.png"));
     ImageIcon Eliminar = new ImageIcon(getClass().getResource("/Recursos_Proyecto/eliminar.png"));
     ImageIcon reporte = new ImageIcon(getClass().getResource("/Recursos_Proyecto/bxs-report 1.png"));

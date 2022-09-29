@@ -36,16 +36,16 @@ public class PanelEstudiantes extends javax.swing.JPanel {
 
     private FrmAgg_Personal add = new FrmAgg_Personal();
     private ControllerPersonal objControllerP = new ControllerPersonal();
-    private final DefaultTableModel ModelAlumnos;
-    private final UWPButton btnActualizar = new UWPButton();
-    private final UWPButton btnEliminar = new UWPButton();
-    private final UWPButton btnReporteP = new UWPButton();
+    public final DefaultTableModel ModelAlumnos;
+    public final UWPButton btnActualizar = new UWPButton();
+    public final UWPButton btnEliminar = new UWPButton();
+    public final UWPButton btnReporteP = new UWPButton();
     //Codigo para colocar la letra que se utilza en el proyecto
     //(private Font font = new Font("Roboto Black", Font.PLAIN, 18);
     private ImageIcon modificar = new ImageIcon(getClass().getResource("/Recursos_Proyecto/editar.png"));
     private ImageIcon eliminar = new ImageIcon(getClass().getResource("/Recursos_Proyecto/eliminar.png"));
     private ImageIcon reporteimg = new ImageIcon(getClass().getResource("/Recursos_Proyecto/bxs-report 1.png"));
-    private int frmstate;
+    public int frmstate;
     private int ID;
 
     /**
@@ -84,7 +84,7 @@ public class PanelEstudiantes extends javax.swing.JPanel {
         }
     }
 
-    private void cargarTabla() {
+    public void cargarTabla() {
         while (ModelAlumnos.getRowCount() > 0) {
             ModelAlumnos.removeRow(0);
         }
