@@ -1203,7 +1203,9 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
         ValidacionesSistema.ValidacionesBeep_Go.Modo = 2;
         NormalMode();
         pld.mode();
+
         plU.darkmod();
+        //pu.darkmod();
         if (_pnldash.isShowing()) {
 
             _pnldash.hide();
@@ -1216,7 +1218,9 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
         ValidacionesSistema.ValidacionesBeep_Go.Modo = 1;
         DarkMode();
         pld.mode();
+
         plU.darkmod();
+        //pu.darkmod();
         _pnldash.hide();
         if (_pnldash.isVisible()) {
 

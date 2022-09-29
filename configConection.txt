@@ -1,6 +1,11 @@
+
 c2E=
 bG9jYWxob3N0
 MTQzMw==
 ZGFuaWVsbG9wZXo=
+QkdVc2Vy
+MTkyLjE2OC4wLjc=
+MTQzMw==
+YmVlcGFuZGdv
 Este es un archivo de configuración para la conexión, porfavor no borrar
 This a file of configuration of connection on database, please don't delete this file

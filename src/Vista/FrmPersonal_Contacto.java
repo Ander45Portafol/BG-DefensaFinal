@@ -15,6 +15,7 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JTable;
@@ -71,7 +72,8 @@ public class FrmPersonal_Contacto extends javax.swing.JFrame {
                 Object[] oValues = {rs.getInt("idPersonal"), rs.getString("Personal"), rs.getString("fecha_nacimiento"), rs.getString("documento"), rs.getString("tipo_personal"), btnAgregar};
                 modelPersonal.addRow(oValues);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            System.out.println(e.toString());
         }
     }
 
@@ -218,7 +220,7 @@ public class FrmPersonal_Contacto extends javax.swing.JFrame {
                 if (btns.getName().equals("btnAgregar")) {
                     FrmAgg_Contacto frmAgg_Contacto = new FrmAgg_Contacto();
                     frmAgg_Contacto.setVisible(true);
-
+                    this.dispose();
                     //Actualizar Contacto metodo
                 }
             }
