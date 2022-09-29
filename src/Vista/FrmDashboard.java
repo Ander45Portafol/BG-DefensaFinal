@@ -335,7 +335,7 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
                 .addGroup(PanelMOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNormal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMO, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         PanelMOLayout.setVerticalGroup(
             PanelMOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1160,7 +1160,7 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
         ValidacionesSistema.ValidacionesBeep_Go.Modo = 2;
         NormalMode();
         pld.mode();
-        pu.darkmod();
+        //pu.darkmod();
         if (_pnldash.isShowing()) {
 
             _pnldash.hide();
@@ -1173,7 +1173,7 @@ public class FrmDashboard extends javax.swing.JFrame implements Runnable {
         ValidacionesSistema.ValidacionesBeep_Go.Modo = 1;
         DarkMode();
         pld.mode();
-        pu.darkmod();
+        //pu.darkmod();
         _pnldash.hide();
         if (_pnldash.isVisible()) {
 

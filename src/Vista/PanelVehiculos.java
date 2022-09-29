@@ -14,6 +14,7 @@ import java.awt.Color;
 import java.sql.Connection;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.ImageIcon;
@@ -80,7 +81,8 @@ public class PanelVehiculos extends javax.swing.JPanel {
                 Object[] oValues = {rs.getInt("idVehiculo"), rs.getString("Personal"), rs.getString("Carnet"), rs.getString("placa"), rs.getString("color"), rs.getInt("idPersonal"), btnModificar, btnEliminar, btnReporte};
                 model.addRow(oValues);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            System.out.println(e.toString());
         }
 
     }

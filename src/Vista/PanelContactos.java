@@ -12,6 +12,7 @@ import Controles_Personalizados.RenderTable;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -98,7 +99,8 @@ public class PanelContactos extends javax.swing.JPanel {
                 Object[] oValues = {rs.getInt("idContacto"), rs.getString("contacto"), rs.getString("Personal"), rs.getString("tipo_contacto"), rs.getInt("idPersonal"), rs.getInt("idTipoContacto"), btnModificar, btnEliminar, btnReporte};
                 model.addRow(oValues);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            System.out.println(e.toString());
         }
 
     }

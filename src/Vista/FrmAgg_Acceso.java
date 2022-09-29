@@ -367,11 +367,7 @@ public class FrmAgg_Acceso extends javax.swing.JFrame {
 
         ControllerAccesos.setDate(date);
         ControllerAccesos.setHour(hour);
-        if (txtJustificacion.getText().contentEquals("")) {
-            ControllerAccesos.setJustification("Sin Justificar");
-        }else{
-            ControllerAccesos.setJustification(txtJustificacion.getText());            
-        }
+        ControllerAccesos.setJustification(txtJustificacion.getText());
     }
 
     private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
@@ -497,8 +493,11 @@ public class FrmAgg_Acceso extends javax.swing.JFrame {
         } else if (getTypeaccess() == 2) {
             rbtnSalida.setSelected(true);
         }
+        if (getNofitication().isEmpty()) {
+            txtJustificacion.setText("");
+        }
         ControllerAccesos.setID(ID);
-       txtJustificacion.setText(getNofitication());
+        txtJustificacion.setText(getNofitication());
 
     }
 
@@ -511,7 +510,7 @@ public class FrmAgg_Acceso extends javax.swing.JFrame {
                 if (ControllerAccesos.updateAccess() == true) {
                     this.dispose();
                 } else {
-                    ValidacionesSistema.ValidacionesBeep_Go.Notificacion("Error ", "No se ha podido modificar la infromación", 2);
+                    ValidacionesSistema.ValidacionesBeep_Go.Notificacion("Error ", "No se ha podido modificar la información", 2);
                 }
             } else {
                 ControllerAccesos.setTypeAccess(2);//out

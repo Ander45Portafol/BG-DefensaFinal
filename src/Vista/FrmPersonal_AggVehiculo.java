@@ -15,6 +15,7 @@ import java.awt.Shape;
 import java.awt.Toolkit;
 import java.awt.geom.RoundRectangle2D;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JTable;
@@ -70,7 +71,8 @@ public Image Logo(){
                 Object[] oValues = {rs.getInt("idPersonal"), rs.getString("Personal"), rs.getString("documento"), rs.getString("tipo_documento"), rs.getString("tipo_personal"), rs.getString("Carnet"), btnAgregar};
                 model.addRow(oValues);
             }
-        } catch(Exception e){
+        } catch(SQLException e){
+            System.out.println(e.toString());
         }
         
     }
@@ -217,7 +219,7 @@ public Image Logo(){
                 if (btns.getName().equals("btnAgregar")) {
                     FrmAgg_Vehiculos vehiculos = new FrmAgg_Vehiculos();
                     vehiculos.setVisible(true);
-
+                    this.dispose();
                     //Actualizar Contacto metodo
                 }
             }
